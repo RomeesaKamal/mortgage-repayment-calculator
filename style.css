@@ -81,8 +81,7 @@ fieldset .input-radio {
   font-size: 2.4rem;
   font-weight: bold;
   color: var(--slate-900);
-  /* border: 1px solid var(--slate-500); */
-
+  border: 1px solid var(--slate-500);
   border-radius: 4px;
   accent-color: var(--lime);
   cursor: pointer;
@@ -336,6 +335,21 @@ fieldset .input-radio:focus {
 .mortgageForm .input-box:has(input:focus) {
   border: 1px solid var(--lime);
 }
+
+
+.error-container {
+  color: red;
+  font-size: 12px;
+}
+input:invalid {
+  border-color: red;
+}
+
+input:valid {
+  border-color: green;
+}
+
+
 
 @media (min-width: 1283px) {
 

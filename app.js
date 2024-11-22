@@ -7,47 +7,83 @@ document.addEventListener("DOMContentLoaded", () => {
 
   resultsFilled.style.display = "none"; // Hide the results initially
 
-  // Target all radio containers
-  const radioContainers = document.querySelectorAll(".input-radio");
-
-  radioContainers.forEach((container) => {
-    container.addEventListener("click", () => {
-      // Select the radio button inside the clicked container
-      const radio = container.querySelector("input[type='radio']");
-      radio.checked = true;
-
-      // Reset background styles for all containers
-      radioContainers.forEach((inputContainer) => {
-        inputContainer.style.backgroundColor = ""; // Reset background
-        inputContainer.style.border = "1px solid var(--slate-500)"; // Reset border
-      });
-
-      // Apply the highlight styles for the selected container
-      container.style.backgroundColor = "hsl(59, 89%, 89%)";
-      container.style.border = "1px solid var(--lime)";
+  // Clear all error messages
+  function clearErrorMessages() {
+    const errorContainers = document.querySelectorAll(".error-container");
+    errorContainers.forEach((container) => {
+      container.textContent = "";
     });
-  });
+  }
+
+  // Display specific error message
+  function displayError(elementId, message) {
+    const errorContainer = document.getElementById(elementId);
+    errorContainer.textContent = message;
+  }
 
   mortgageForm.addEventListener("submit", (e) => {
     e.preventDefault(); // Prevent form submission and page reload
 
-    const amount = parseFloat(document.getElementById("amount").value);
-    const term = parseInt(document.getElementById("term").value);
-    const interestRate = parseFloat(
-      document.getElementById("interest_rate").value
-    );
-    const mortgageType = document.querySelector(
-      'input[name="mortgage_type"]:checked'
-    ).value;
+    // Clear previous error messages
+    clearErrorMessages();
 
-    if (isNaN(amount) || isNaN(term) || isNaN(interestRate)) {
-      alert("Please provide valid inputs.");
-      return;
+    // Retrieve inputs
+    const amountInput = document.getElementById("amount");
+    const termInput = document.getElementById("term");
+    const interestRateInput = document.getElementById("interest_rate");
+    const mortgageTypeInput = document.querySelector(
+      'input[name="mortgage_type"]:checked'
+    );
+
+    const amount = parseFloat(amountInput.value);
+    const term = parseInt(termInput.value);
+    const interestRate = parseFloat(interestRateInput.value);
+
+    // Validation flags
+    let formIsValid = true;
+
+    // Validate Amount
+    if (!amountInput.value.trim()) {
+      displayError("error-amount", "Please enter a mortgage amount.");
+      formIsValid = false;
+    } else if (amount <= 0) {
+      displayError("error-amount", "Mortgage amount must be greater than 0.");
+      formIsValid = false;
     }
 
+    // Validate Term
+    if (!termInput.value.trim()) {
+      displayError("error-term", "This field is required.");
+      formIsValid = false;
+    } else if (term <= 0) {
+      displayError("error-term", "Mortgage term must be greater than 0.");
+      formIsValid = false;
+    }
+
+    // Validate Interest Rate
+    if (!interestRateInput.value.trim()) {
+      displayError("error-interest-rate", "This field is required.");
+      formIsValid = false;
+    } else if (interestRate < 0) {
+      displayError("error-interest-rate", "Interest rate cannot be negative.");
+      formIsValid = false;
+    }
+  
+    
+
+    // Validate Mortgage Type
+    if (!mortgageTypeInput) {
+      displayError("error-mortgage-type", "This field is required.");
+      formIsValid = false;
+    }
+
+    // Stop further processing if the form is invalid
+    if (!formIsValid) return;
+
+    // Perform calculations (only if the form is valid)
     let monthlyPayment, totalRepaymentAmount;
 
-    if (mortgageType === "repayment") {
+    if (mortgageTypeInput.value === "repayment") {
       // Repayment Mortgage Calculation
       const monthlyRate = interestRate / 100 / 12;
       const totalMonths = term * 12;
@@ -61,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       totalRepaymentAmount = monthlyPayment * totalMonths;
-    } else if (mortgageType === "interest_only") {
+    } else if (mortgageTypeInput.value === "interest_only") {
       // Interest-Only Mortgage Calculation
       const annualInterest = (amount * interestRate) / 100;
       monthlyPayment = annualInterest / 12;
@@ -69,29 +105,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Update the results
-    
     monthlyRepayment.textContent = `£${monthlyPayment.toFixed(2)}`;
     totalRepayment.textContent = `£${totalRepaymentAmount.toFixed(2)}`;
 
     // Show results and hide the empty section
-
     resultsEmpty.style.display = "none";
     resultsFilled.style.display = "block";
   });
 
   // Clear results when the form is reset
-
   mortgageForm.addEventListener("reset", () => {
     resultsEmpty.style.display = "block";
     resultsFilled.style.display = "none";
     monthlyRepayment.textContent = "";
     totalRepayment.textContent = "";
 
-    // Reset container styles
-
-    radioContainers.forEach((inputContainer) => {
-      inputContainer.style.backgroundColor = "";
-      inputContainer.style.border = "1px solid var(--slate-500)";
-    });
+    // Clear all error messages
+    clearErrorMessages();
   });
 });
