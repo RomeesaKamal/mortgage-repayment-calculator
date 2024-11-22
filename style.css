@@ -1,0 +1,424 @@
+:root {
+  --lime: #D8DB2F;
+  --slate-950: #0e2431;
+  --slate-900: #133041;
+  --slate-700: #4E6E7E;
+  --slate-500: #6B94A8;
+  --slate-300: #9ABED5;
+  --slate-100: #E4F4FD;
+  --white-main: #FFFFFF;
+  --red-main: #D73328;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  display: flex;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: 'Plus Jakarta Sans', Arial;
+}
+
+
+main {
+  display: flex;
+  /* flex-direction: column; */
+  margin-left: 70px;
+}
+
+/* Form Styling */
+.form__container {
+  padding: 3.2rem 2.4rem;
+  background-color: var(--white-main);
+}
+
+.form__container h1 {
+  font-size: 2.4rem;
+  margin-bottom: 0.8rem;
+  line-height: 125%;
+  color: var(--slate-900);
+}
+
+.mortgageForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.mortgageForm label {
+  margin-bottom: 0.8rem;
+  font-size: 1.6rem;
+  line-height: 150%;
+  color: var(--slate-700);
+}
+
+.form__mediaquery--item .mortgage-term-label,
+.form__mediaquery--item .interest-rate-label {
+  display: flex;
+  margin-bottom: 0.8rem;
+  font-size: 1.6rem;
+  line-height: 150%;
+  color: var(--slate-700);
+}
+
+/* Input radio Styling */
+
+.mortgageForm fieldset {
+  border: none;
+  margin-bottom: 1.2rem;
+}
+
+fieldset .input-radio {
+  width: 100%;
+  height: 4.8rem;
+  margin: 1.2rem 0;
+  padding: 0.8rem;
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: var(--slate-900);
+  border: 1px solid var(--slate-500);
+  border-radius: 4px;
+  accent-color: var(--lime);
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+fieldset .input-radio input {
+  margin: 0 0.8rem;
+  cursor: pointer;
+}
+
+fieldset .input-radio label {
+  cursor: pointer;
+}
+
+.mortgageForm legend {
+  font-size: 1.6rem;
+  line-height: 150%;
+  color: var(--slate-700);
+}
+
+/* Inputs numéricos  Styling*/
+
+.mortgageForm .input-box {
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 4.5rem;
+  margin-bottom: 2.4rem;
+  border-radius: 4px;
+  border-collapse: separate;
+  border: 1px solid var(--slate-500);
+  overflow: hidden;
+}
+
+.mortgageForm .input-box input {
+  position: relative;
+  z-index: 2;
+  float: left;
+  width: 100%;
+  height: 100%;
+  padding-left: 0.8rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--slate-900);
+  border: none;
+  cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.mortgageForm .input-box span {
+  display: table-cell;
+  padding: 0.8rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  color: var(--slate-700);
+  background-color: var(--slate-100);
+  white-space: nowrap;
+  border: none;
+}
+
+.input-box .input-icon {
+  max-width: 5rem;
+}
+
+.input-box .input-years {
+  max-width: 30rem;
+}
+
+/*  Clear All Button Styling */
+
+.mortgageForm .input-reset {
+  width: auto;
+  flex-shrink: 0;
+  flex-grow: 0;
+  align-self: flex-start;
+  margin-bottom: 2.4rem;
+  font-size: 1.6rem;
+  line-height: 150%;
+  color: var(--slate-700);
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Calculate Repayments Button styling */
+
+.mortgageForm .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--slate-900);
+  width: 32.7rem;
+  height: 5.6rem;
+  color: var(--slate-900);
+  background-color: var(--lime);
+  border: none;
+  border-radius: 9rem;
+  cursor: pointer;
+}
+
+.mortgageForm .btn img {
+  margin-right: 0.8rem;
+}
+
+/*Result Message styling */
+
+.results__container .results__empty {
+  width: 100%;
+  height: 39rem;
+  padding: 3.2rem 2.4rem;
+  background-color: var(--slate-900);
+  justify-items: center;
+  align-items: center;
+}
+
+.results__container .results__empty h2 {
+  font-size: 2.4rem;
+  line-height: 125%;
+  margin-top: 1.6rem;
+  margin-bottom: 1.6rem;
+  color: var(--white-main);
+}
+
+.results__container .results__empty p {
+  font-size: 1.6rem;
+  line-height: 150%;
+  color: var(--slate-300);
+  text-align: center;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Result data styling */
+
+.results__filled {
+  display: none;
+  width: 100%;
+  height: 45.5rem;
+  padding: 3.2rem 2.4rem;
+  background-color: var(--slate-900);
+  justify-items: flex-start;
+  align-items: center;
+}
+
+.results__filled h2 {
+  font-size: 2.4rem;
+  line-height: 125%;
+  margin-bottom: 1.6rem;
+  color: var(--white-main);
+}
+
+.results__filled p {
+  font-size: 1.6rem;
+  line-height: 140%;
+  color: var(--slate-300);
+  text-align: left;
+}
+
+.results-data__container {
+  width: 100%;
+  height: 22.5rem;
+  margin-top: 2.4rem;
+  padding: 2.4rem 1.6rem;
+  align-content: center;
+  background-color: var(--slate-950);
+  border-radius: 0.8rem;
+  box-shadow: 0 -4px var(--lime);
+}
+
+.results-data__container span {
+  font-size: 1.6rem;
+  line-height: 140%;
+  color: var(--slate-300);
+}
+
+.results-data__container .results-data__monthly {
+  margin-top: 0.8rem;
+  font-size: 4.8rem;
+  font-weight: bold;
+  line-height: 125%;
+  color: var(--lime);
+}
+
+.results-data__container hr {
+  margin: 1.6rem 0;
+  border: 0.5px solid var(--slate-700);
+}
+
+.results-data__container .results-data__total {
+  margin-top: 0.8rem;
+  font-size: 2.4rem;
+  font-weight: bold;
+  line-height: 125%;
+  color: var(--white-main);
+}
+
+/* Fake-classes */
+
+/* Hover */
+
+fieldset .input-radio:hover {
+  border: 1px solid var(--lime);
+}
+
+.mortgageForm .btn:hover {
+  opacity: 0.5;
+}
+
+/* Active */
+
+.mortgageForm .input-box:active {
+  border: 1px solid var(--lime);
+}
+
+fieldset .input-radio:active{
+  border: 1px solid var(--lime);
+}
+
+
+/* Focus */
+
+.mortgageForm .input-box input:focus {
+  outline: none;
+}
+
+fieldset .input-radio:focus {
+  border: 1px solid var(--lime);
+}
+
+.mortgageForm .input-box input:focus~span {
+  background-color: var(--lime);
+}
+
+.mortgageForm .input-box span:has(~input:focus) {
+  background-color: var(--lime);
+}
+
+.mortgageForm .input-box:has(input:focus) {
+  border: 1px solid var(--lime);
+}
+
+@media (min-width: 1281px) {
+
+  main {
+    width: 100.8rem;
+    height: 60.6rem;
+    flex-direction: row;
+    background-color: var(--white-main);
+  }
+
+  .form__container {
+    width: 50%;
+    height: 100%;
+  }
+
+  .results__container {
+    width: 50%;
+    border-radius: 0 0 0 10rem;
+    overflow: hidden;
+  }
+
+  .results__container .results__empty {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+  }
+
+  .results__container .results__filled {
+    flex-direction: column;
+    height: 100%;
+    padding: 4rem;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 768px) {
+
+  body {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 2.4rem 0;
+    background-color: var(--slate-300);
+  }
+
+  main {
+    width: 90%;
+    border-radius: 2.4rem;
+    overflow: hidden;
+  }
+
+  .form__container {
+    padding: 4rem;
+  }
+
+  .mortgageForm .input-reset {
+    position: relative;
+    top: -3.8rem;
+    align-self: flex-end;
+  }
+
+  .form__mediaquery {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .form__mediaquery--item {
+    width: 48%;
+  }
+
+  .input-box .input-icon:nth-child(2) {
+    max-width: 40px;
+  }
+
+  .input-box .input-years {
+    max-width: 60px;
+  }
+
+  .results__container .results__empty {
+    padding: 4rem;
+   
+            
+  }
+}
+
