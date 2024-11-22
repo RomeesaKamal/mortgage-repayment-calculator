@@ -7,6 +7,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
   resultsFilled.style.display = "none"; // Hide the results initially
 
+  // Target all radio containers
+  const radioContainers = document.querySelectorAll(".input-radio");
+
+  radioContainers.forEach((container) => {
+    container.addEventListener("click", () => {
+      // Select the radio button inside the clicked container
+      const radio = container.querySelector("input[type='radio']");
+      radio.checked = true;
+
+      // Reset background styles for all containers
+      radioContainers.forEach((inputContainer) => {
+        inputContainer.style.backgroundColor = ""; // Reset background
+        inputContainer.style.border = "1px solid var(--slate-500)"; // Reset border
+      });
+
+      // Apply the highlight styles for the selected container
+      container.style.backgroundColor = "hsl(59, 89%, 89%)";
+      container.style.border = "1px solid var(--lime)";
+    });
+  });
+
   mortgageForm.addEventListener("submit", (e) => {
     e.preventDefault(); // Prevent form submission and page reload
 
@@ -40,41 +61,20 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       totalRepaymentAmount = monthlyPayment * totalMonths;
-    } else if (mortgageType === "interes_only") {
+    } else if (mortgageType === "interest_only") {
       // Interest-Only Mortgage Calculation
       const annualInterest = (amount * interestRate) / 100;
       monthlyPayment = annualInterest / 12;
       totalRepaymentAmount = annualInterest * term + amount;
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-        const radioButtons = document.querySelectorAll(".input-radio input");
-      
-        radioButtons.forEach((radio) => {
-          radio.addEventListener("click", () => {
-            // Reset styles for all containers
-            document.querySelectorAll(".input-radio").forEach((inputContainer) => {
-              inputContainer.style.backgroundColor = ""; // Reset background
-            //   inputContainer.style.border = "1px solid var(--slate-500)"; // Reset border
-            });
-      
-            // Highlight the selected container
-            const parentContainer = radio.closest(".input-radio");
-            parentContainer.style.backgroundColor = "hsl(59, 89%, 89%)";
-            parentContainer.style.border = "1px solid var(--lime)";
-      
-            // Ensure the radio button is selected
-            radio.checked = true;
-          });
-        });
-      });
-      
-
     // Update the results
+    
     monthlyRepayment.textContent = `£${monthlyPayment.toFixed(2)}`;
     totalRepayment.textContent = `£${totalRepaymentAmount.toFixed(2)}`;
 
     // Show results and hide the empty section
+
     resultsEmpty.style.display = "none";
     resultsFilled.style.display = "block";
   });
@@ -86,5 +86,12 @@ document.addEventListener("DOMContentLoaded", () => {
     resultsFilled.style.display = "none";
     monthlyRepayment.textContent = "";
     totalRepayment.textContent = "";
+
+    // Reset container styles
+
+    radioContainers.forEach((inputContainer) => {
+      inputContainer.style.backgroundColor = "";
+      inputContainer.style.border = "1px solid var(--slate-500)";
+    });
   });
 });
