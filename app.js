@@ -18,16 +18,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // Display specific error message
   function displayError(elementId, message) {
     const errorContainer = document.getElementById(elementId);
-    errorContainer.textContent = message;
+    if (errorContainer) {
+      errorContainer.textContent = message;
+    }
   }
 
   mortgageForm.addEventListener("submit", (e) => {
     e.preventDefault(); // Prevent form submission and page reload
-
-    // Clear previous error messages
-    clearErrorMessages();
+    clearErrorMessages();    // Clear previous error messages
 
     // Retrieve inputs
+
     const amountInput = document.getElementById("amount");
     const termInput = document.getElementById("term");
     const interestRateInput = document.getElementById("interest_rate");
@@ -35,16 +36,17 @@ document.addEventListener("DOMContentLoaded", () => {
       'input[name="mortgage_type"]:checked'
     );
 
-    const amount = parseFloat(amountInput.value);
-    const term = parseInt(termInput.value);
-    const interestRate = parseFloat(interestRateInput.value);
+    // Parse input values
+    const amount = parseFloat(amountInput.value) || 0;
+    const term = parseInt(termInput.value) || 0;
+    const interestRate = parseFloat(interestRateInput.value) || 0;
 
     // Validation flags
     let formIsValid = true;
 
     // Validate Amount
     if (!amountInput.value.trim()) {
-      displayError("error-amount", "Please enter a mortgage amount.");
+      displayError("error-amount", "This field is reqired.");
       formIsValid = false;
     } else if (amount <= 0) {
       displayError("error-amount", "Mortgage amount must be greater than 0.");
@@ -68,8 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
       displayError("error-interest-rate", "Interest rate cannot be negative.");
       formIsValid = false;
     }
-  
-    
 
     // Validate Mortgage Type
     if (!mortgageTypeInput) {
@@ -81,7 +81,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!formIsValid) return;
 
     // Perform calculations (only if the form is valid)
-    let monthlyPayment, totalRepaymentAmount;
+    let monthlyPayment = 0;
+    let totalRepaymentAmount = 0;
 
     if (mortgageTypeInput.value === "repayment") {
       // Repayment Mortgage Calculation
@@ -103,6 +104,10 @@ document.addEventListener("DOMContentLoaded", () => {
       monthlyPayment = annualInterest / 12;
       totalRepaymentAmount = annualInterest * term + amount;
     }
+
+    // Ensure the results are valid numbers
+    monthlyPayment = isNaN(monthlyPayment) ? 0 : monthlyPayment;
+    totalRepaymentAmount = isNaN(totalRepaymentAmount) ? 0 : totalRepaymentAmount;
 
     // Update the results
     monthlyRepayment.textContent = `£${monthlyPayment.toFixed(2)}`;

@@ -18,6 +18,7 @@
 
 body{
   display: flex;
+  flex-direction: column;
 }
 
 html {
@@ -28,7 +29,7 @@ html {
 
 main {
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
   margin-left: 70px;
 }
 
@@ -60,6 +61,7 @@ main {
 .form__mediaquery--item .mortgage-term-label,
 .form__mediaquery--item .interest-rate-label {
   display: flex;
+  flex-direction: column;
   margin-bottom: 0.8rem;
   font-size: 1.6rem;
   line-height: 150%;
@@ -189,7 +191,6 @@ input[type=number] {
   color: var(--slate-900);
   width: 32.7rem;
   height: 5.6rem;
-  color: var(--slate-900);
   background-color: var(--lime);
   border: none;
   border-radius: 9rem;
@@ -339,8 +340,10 @@ fieldset .input-radio:focus {
 
 .error-container {
   color: red;
-  font-size: 12px;
+  font-size: 13px;
+  padding: 0;
 }
+
 input:invalid {
   border-color: red;
 }
@@ -431,9 +434,34 @@ input:valid {
   }
 
   .results__container .results__empty {
-    padding: 4rem;
-   
-            
+    padding: 4rem;    
+
+  }
+
+}
+
+@media(max-width:420px){
+  body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mortgageForm, .results__container{
+    padding-right: 30px;
+  }
+
+ .mortgageForm .btn{
+    width: 265px;
+    height: 5.6rem;
+  }
+  
+  .results__filled p{
+    font-size: 2px;
   }
 }
+
+
+
+
 

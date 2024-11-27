@@ -19,6 +19,7 @@
       .attribution {
         font-size: 11px;
         text-align: center;
+        margin-top: 40px;
       }
       .attribution a {
         color: hsl(228, 45%, 44%);
@@ -28,6 +29,7 @@
   </head>
   <body>
     <main>
+
       <!-- Form -->
 
       <section class="form__container">
@@ -39,15 +41,10 @@
           <label for="amount">Mortgage Amount</label>
           <div class="input-box">
             <span class="input-icon">£</span>
-            <input
-              type="number"
-              id="amount"
-              name="amount"
-              step="0.01"
-              required
-            />
+            <input type="number" id="amount" name="amount" step="0.01" />
           </div>
           <p class="error-container" id="error-amount"></p>
+
 
           <div class="form__mediaquery">
             <div class="form__mediaquery--item">
@@ -55,11 +52,12 @@
                 >Mortgage Term</label
               >
               <div class="input-box">
-                <input type="number" id="term" name="term" required />
+                <input type="number" id="term" name="term" />
                 <span class="input-years">years</span>
               </div>
+
+             <p class="error-container" id="error-term"></p>
             </div>
-            <p class="error-container" id="error-term"></p>
 
             <div class="form__mediaquery--item">
               <label for="interest_rate" class="interest-rate-label"
@@ -71,8 +69,9 @@
                   name="interest_rate"
                   id="interest_rate"
                   step="0.01"
-                  required
+          
                 />
+
                 <span class="input-icon">%</span>
               </div>
               <p class="error-container" id="error-interest-rate"></p>
@@ -87,7 +86,7 @@
                 id="repayment"
                 name="mortgage_type"
                 value="repayment"
-                required
+
               />
               <label for="repayment">Repayment</label>
             </div>
@@ -98,12 +97,13 @@
                 id="interest_only"
                 name="mortgage_type"
                 value="interes_only"
-                required
+
               />
               <label for="interest_only">Interest Only</label>
             </div>
-          </fieldset>
+
           <p class="error-container" id="error-mortgage-type"></p>
+          </fieldset>
 
           <button type="submit" class="btn">
             <img
