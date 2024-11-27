@@ -32,9 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const amountInput = document.getElementById("amount");
     const termInput = document.getElementById("term");
     const interestRateInput = document.getElementById("interest_rate");
-    const mortgageTypeInput = document.querySelector(
-      'input[name="mortgage_type"]:checked'
-    );
+    const mortgageTypeInput = document.querySelectorAll(".input-radio");
 
     // Parse input values
     const amount = parseFloat(amountInput.value) || 0;
