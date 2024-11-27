@@ -19,6 +19,9 @@
 body{
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 6rem;
 }
 
 html {
@@ -106,6 +109,23 @@ fieldset .input-radio label {
 }
 
 /* Inputs numéricos  Styling*/
+
+.input-radio {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.input-radio input[type="radio"]:checked + label {
+  background-color: lightyellow;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+label {
+  cursor: pointer;
+}
 
 .mortgageForm .input-box {
   position: relative;

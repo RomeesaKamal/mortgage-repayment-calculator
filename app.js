@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const monthlyRepayment = document.getElementById("results-data__monthly");
     const totalRepayment = document.getElementById("results-data__total");
   
+    const mortgageTypeInputs = document.querySelectorAll("input[name='mortgage_type']");
+    const mortgageTypeContainers = document.querySelectorAll(".input-radio");
+  
     resultsFilled.style.display = "none"; // Hide the results initially
   
     // Clear all error messages
@@ -23,6 +26,23 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   
+    // Add active background color
+    function updateMortgageTypeBackground() {
+      mortgageTypeContainers.forEach((container) => {
+        const input = container.querySelector("input[type='radio']");
+        if (input.checked) {
+          container.style.backgroundColor = "lightyellow";
+        } else {
+          container.style.backgroundColor = ""; // Reset
+        }
+      });
+    }
+  
+    // Attach event listeners to mortgage type radio buttons
+    mortgageTypeInputs.forEach((input) => {
+      input.addEventListener("change", updateMortgageTypeBackground);
+    });
+  
     mortgageForm.addEventListener("submit", (e) => {
       e.preventDefault(); // Prevent form submission and page reload
       clearErrorMessages(); // Clear previous error messages
@@ -31,7 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const amountInput = document.getElementById("amount");
       const termInput = document.getElementById("term");
       const interestRateInput = document.getElementById("interest_rate");
-      const mortgageTypeInputs = document.querySelectorAll("input[name='mortgage_type']");
   
       // Parse input values
       const amount = parseFloat(amountInput.value) || 0;
@@ -132,6 +151,11 @@ document.addEventListener("DOMContentLoaded", () => {
   
       // Clear all error messages
       clearErrorMessages();
+  
+      // Reset mortgage type background
+      mortgageTypeContainers.forEach((container) => {
+        container.style.backgroundColor = "";
+      });
     });
   });
   
