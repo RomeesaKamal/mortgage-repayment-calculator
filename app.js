@@ -97,10 +97,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       totalRepaymentAmount = monthlyPayment * totalMonths;
     } else if (mortgageTypeInput.value === "interest_only") {
+
       // Interest-Only Mortgage Calculation
+
       const annualInterest = (amount * interestRate) / 100;
       monthlyPayment = annualInterest / 12;
       totalRepaymentAmount = annualInterest * term + amount;
+      console.log(amountInput)
     }
 
     // Ensure the results are valid numbers

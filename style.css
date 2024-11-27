@@ -341,7 +341,6 @@ fieldset .input-radio:focus {
 .error-container {
   color: red;
   font-size: 13px;
-  padding: 0;
 }
 
 input:invalid {
