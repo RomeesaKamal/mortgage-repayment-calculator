@@ -1,6 +1,6 @@
 # Frontend Mentor - Mortgage repayment calculator solution
 
-This is a solution to the [Mortgage repayment calculator challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/mortgage-repayment-calculator-Galx1LXK73). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Mortgage repayment calculator challenge on Frontend Mentor](https://romeesakamal.github.io/mortgage-repayment-calculator/). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
 ## Table of contents
 
@@ -44,8 +44,8 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [ solution URL here](https://github.com/RomeesaKamal/mortgage-repayment-calculator)
+- Live Site URL: [ live site URL here](https://romeesakamal.github.io/mortgage-repayment-calculator/)
 
 ## My process
 
@@ -101,9 +101,8 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- Website - [Romeesa Kamal](https://romeesakamal.github.io/mortgage-repayment-calculator/)
+- Frontend Mentor - [@Romeesakamal](https://www.frontendmentor.io/profile/yourusername)
 
 **Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
 
