@@ -9,6 +9,7 @@
 ## Table of contents
 
 - [Features](#features)
+- [Purpose](#purpose)
 - [Getting Started](#getting-started)
 - [Set up](#setup)
 - [Usage](#usage)
@@ -37,6 +38,25 @@
 
 ## Purpose
 This project showcases the practical application of JavaScript for solving real-world problems. It emphasizes user interaction, precise mathematical computations, and responsive design principles.
+
+
+### Getting Started
+
+To get a local copy up and running follow these simple steps.
+
+Prerequisites
+VIsual Studio Code.
+A Web Browser (preferably Brave)
+
+### Setup
+
+Clone the GitHub Repository
+
+- git clone "https://github.com/RomeesaKamal/mortgage-repayment-calculator.git"
+
+### Usage
+
+Start your server by clicking Go Live
 
 ## Overview
 
