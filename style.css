@@ -417,8 +417,6 @@ input:valid {
     align-items: center;
     justify-content: center;
     padding: 2.4rem 0;
-    margin-inline: 4rem;
-    position: relative;
     background-color: var(--slate-300);
   }
 
