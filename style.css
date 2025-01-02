@@ -34,7 +34,7 @@ html {
 main {
   display: flex;
   flex-direction: column;
-  margin-left: 70px;
+  /* margin-left: 70px; */
 }
 
 /* Form Styling */
