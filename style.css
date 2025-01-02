@@ -23,6 +23,8 @@ body{
   align-items: center;
   max-width: 1280px;
   margin-inline: auto;
+  margin-bottom: 5rem;
+  padding: 2rem;
 }
 
 html {
@@ -379,6 +381,7 @@ input:valid {
   main {
     width: 100.8rem;
     height: 60.6rem;
+    margin-bottom: 8rem;
     flex-direction: row;
     background-color: var(--white-main);
   }
